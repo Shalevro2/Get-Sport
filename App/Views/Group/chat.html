@@ -1,0 +1,20 @@
+{% block footer %}
+
+
+{% endblock %}
+
+{% block body %}
+
+<!-- Chat messages -->
+{% for message in messageArr %}
+<p>
+    <strong>{{ message.DateTime }}</strong>
+    <span> {% if user.userName != message.sender %}
+        {{ message.sender }}
+        {% else %}
+        Me
+        {% endif %}: {{ message.messageBody }}</span>
+</p>
+
+{% endfor %}
+{% endblock %}

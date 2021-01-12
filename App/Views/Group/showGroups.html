@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block title %}Groups{% endblock %}
+
+{% block footer %}
+
+<script src="/js/showGroups.js"></script>
+<script src="/js/divSportBG.js"></script>
+<link rel="stylesheet" href="/css/scrollx.css" />
+
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="row" id=" filterGroupsDiv">
+    <!-- show groups form -->
+    <form method="post" id="formShowGroups">
+
+        <!--Selected city, save the last search or the city of user-->
+        {% if post.cityCode %}
+        {% set citySelect = post.cityCode  %}
+        {% else %}
+        {% set citySelect = user.cityCode %}
+        {% endif %}
+
+        <!--Selected Sport Category, save the last search or football-->
+        {% if post.SportCategoryCode %}
+        {% set SportCategorySelect = post.SportCategoryCode  %}
+        {% else %}
+        {% set SportCategorySelect = 1 %}
+        {% endif %}
+        <!-- city div -->
+        <div class="form-group col-lg-6">
+            <select id="selectCityCode" class="form-control" name='cityCode'>
+                {% for dropdownOption in City %}
+                <option value="{{ dropdownOption.cityCode }}" {% if citySelect == dropdownOption.cityCode %}
+                    selected="selected" {% endif %}>
+                    {{ dropdownOption.cityName }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- sport Category div -->
+        <div class="form-group col-lg-6">
+            <select id="selectSportCategory" class="form-control" name='SportCategoryCode'>
+                {% for dropdownOption in SportCategory %}
+                <option value="{{ dropdownOption.SportCategoryCode }}"
+                    {% if SportCategorySelect == dropdownOption.SportCategoryCode %} selected="selected" {% endif %}>
+                    {{ dropdownOption.SportCategoryName }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+    </form>
+</div>
+<!-- search div -->
+<div class="md-form active-cyan-2 mb-3">
+    <input class="form-control" type="text" id="inputSearch" name="inputSearch" placeholder="Search group.."
+        aria-label="Search">
+</div>
+
+<!-- create group form -->
+<form method="post" action="/Group/new" id="formShowGroupsCreate">
+    <div class="text-center">
+        <button type="submit" class="btn btn-default">Create Group</button>
+    </div>
+</form>
+
+
+<!-- groups div -->
+{% if Groups %}
+{% for key,value in Groups %}
+{% if (key is divisible by(3) or key == 0) %}
+<div class="flex-container rowGroupDiv" id="rowGroupDiv{{key}}">
+
+    {% for g in Groups|slice(key,3) %}
+    <!-- group details -->
+    <div class="flex-item divSpanDetails rgba-blue-light hoverable groupCard GroupDiv{{key}}"
+        name="{{ g.SportCategoryCode }}">
+
+        <h6 class="hGroupName">
+            {{ g.GroupName }}
+        </h6>
+        <p class="pull-left divSpanDetails">
+            <span class=" glyphicon glyphicon-calendar">
+                Date: {{ g.datePlay }}
+            </span>
+        </p>
+        <p class="pull-left divSpanDetails">
+            <span class=" glyphicon glyphicon glyphicon-time">
+                Time: {{ g.timePlay }}
+            </span>
+        </p>
+        <p class="pull-left divSpanDetails">
+            <span class="glyphicon glyphicon-user">
+                Friends: {{ g.Members }}
+            </span>
+        </p>
+        <p class="pull-left divSpanDetails">
+            <span class="glyphicon glyphicon glyphicon-file pull-left"></span>
+            Descrption: {{ g.descrption }}
+        </p>
+        <!-- join button -->
+        <div class="">
+            <form action="/Group/join" method="post" class="frmJoin">
+                <button type=" button" class="btn btn-light btn-sm btnBottomRight" name='btnJoin'
+                    value='{{g.GroupName}}'>
+                    Join <span class="glyphicon glyphicon glyphicon-log-in"></span>
+                </button>
+            </form>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+{% endif %}
+{% endfor %}
+
+{% else %}
+<h3 class=" text-center">No groups yet!</h3>
+{% endif %}
+
+{% endblock %}

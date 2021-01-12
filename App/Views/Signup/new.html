@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block footer %}
+<script src="/js/hideShowPassword.min.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/newUser.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+
+{% if user.errors is not empty %}
+<p>Errors:</p>
+<ul>
+    {% for error in user.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<h1 class="h1Css text-center">Sign Up</h1>
+
+<div class="container signupDiv">
+
+    <div class="divFromSignUp">
+        <!-- signup form -->
+        <form method="post" action="/signup/create" id="formSignup">
+            <!-- user name div -->
+            <div class="form-group">
+                <label for="inputUserName">User Name</label>
+                <input id="inputUserName" name="userName" placeholder="User Name" autofocus value="{{ user.userName }}"
+                    required class="form-control" />
+            </div>
+            <!-- name div -->
+            <div class="row">
+                <div class="form-group col-xs-6 col-md-6">
+                    <label for="inputName">Name</label>
+                    <input id="inputName" name="name" placeholder="Name" autofocus value="{{ user.name }}" required
+                        class="form-control" />
+                </div>
+                <!-- last name div -->
+                <div class="form-group col-xs-6 col-md-6">
+                    <label for="inputLastName">Last Name</label>
+                    <input id="inputLastName" name="lastName" placeholder="Last Name" autofocus
+                        value="{{ user.lastName }}" required class="form-control" />
+                </div>
+            </div>
+            <!-- email div -->
+            <div class="form-group">
+                <label for="inputEmail">Email address</label>
+                <input id="inputEmail" name="email" placeholder="email address" value="{{ user.email }}" required
+                    type="email" class="form-control" />
+            </div>
+            <!-- city div -->
+            <div class="form-group">
+                <label for="selectCityCode">City</label>
+                <select id="selectCityCode" class="form-control" name='cityCode'>
+                    {% for dropdownOption in City %}
+                    <option value="{{ dropdownOption.cityCode }}">{{ dropdownOption.cityName }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- date of birth div -->
+            <div class="form-group">
+                <label for="inputDateOfBirth">Date Of Birth</label>
+                <input id="inputDateOfBirth" class="form-control" type="date" name="dateOfBirth" required>
+            </div>
+            <!-- password div -->
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" id="inputPassword" name="password" placeholder="Password" required
+                    class="form-control" />
+            </div>
+            <!-- submit button -->
+            <button type="submit" class="btn btn-default">Sign up</button>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

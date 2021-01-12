@@ -1,0 +1,35 @@
+{% block footer %}
+
+
+{% endblock %}
+
+{% block body %}
+
+<!-- Show the group details -->
+<p>
+    <i class="fas fa-city"></i>
+    City: {{ city }}
+</p>
+
+<p>
+    <span class=" glyphicon glyphicon-calendar">
+        Date: {{ group.datePlay }}
+    </span>
+</p>
+
+<p>
+    <span class=" glyphicon glyphicon glyphicon-time">
+        Time: {{ group.timePlay }}
+    </span>
+</p>
+
+<p>
+    <span class="glyphicon glyphicon glyphicon-file"></span>
+    Descrption: {{ group.descrption }}
+</p>
+
+{% if user.userName == group.userNameManager%}
+<a class="pull-right" id="editInfo">Edit</a>
+{% endif %}
+
+{% endblock %}

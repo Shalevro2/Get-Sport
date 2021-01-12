@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}Groups{% endblock %}
+
+{% block footer %}
+
+<script src="/js/showGroups.js"></script>
+<script src="/js/divSportBG.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+
+{% endblock %}
+
+{% block body %}
+<!-- search div -->
+<div class="md-form active-cyan-2 mb-3">
+    <input class="form-control" type="text" id="inputSearch" name="inputSearch" placeholder="Search group.."
+        aria-label="Search">
+</div>
+
+
+{% if Groups %}
+{% for key,value in Groups %}
+{% if (key is divisible by(3) or key == 0) %}
+<div class="flex-container rowGroupDiv" id="rowGroupDiv{{key}}">
+    <!-- groups div -->
+    {% for g in Groups|slice(key,3) %}
+    <div class="flex-item divSpanDetails rgba-blue-light hoverable groupCard GroupDiv{{key}}"
+        name="{{ g.SportCategoryCode }}">
+        <!-- notifcation div -->
+        {% if g.Notification > 0 %}
+        <i href="#" class="notification">
+            <span class="badge">{{ g.Notification }}</span>
+        </i>
+        {% endif %}
+        <!-- details of group: -->
+        <h6 class="hGroupName">
+            {{ g.GroupName }}
+        </h6>
+        <p class="pull-left divSpanDetails">
+            <span class=" glyphicon glyphicon-calendar">
+                Date: {{ g.datePlay }}
+            </span>
+        </p>
+        <p class="pull-left divSpanDetails">
+            <span class=" glyphicon glyphicon glyphicon-time">
+                Time: {{ g.timePlay }}
+            </span>
+        </p>
+        <p class="pull-left divSpanDetails">
+            <span class="glyphicon glyphicon-user">
+                Friends: {{ g.Members }}
+            </span>
+        </p>
+        <p class="pull-left divSpanDetails">
+            <span class="glyphicon glyphicon glyphicon-file pull-left"></span>
+            Descrption: {{ g.descrption }}
+        </p>
+        <!-- join group form -->
+        <div class="">
+            <form action="/Group/join" method="post" class="frmJoin">
+                <button type=" button" class="btn btn-light btn-sm btnBottomRight" name='btnJoin'
+                    value='{{g.GroupName}}'>
+                    Enter <span class="glyphicon glyphicon glyphicon-log-in"></span>
+                </button>
+            </form>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+{% endif %}
+{% endfor %}
+
+{% else %}
+<h3 class=" text-center">No groups yet!</h3>
+{% endif %}
+
+{% endblock %}

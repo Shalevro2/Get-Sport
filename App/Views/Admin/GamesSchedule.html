@@ -1,0 +1,27 @@
+{% extends 'baseAdmin.html' %}
+
+{% block title %}Games Schedule{% endblock %}
+
+
+{% block footer %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/cupertino/jquery-ui.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
+
+<script src="/js/GamesSchedule.js"></script>
+
+
+{% endblock %}
+
+{% block body %}
+<!-- Title -->
+<h1 class="h1Css">Games Schedule</h1>
+<!-- Container to calendar -->
+<div class="container">
+    <div id="calendar"></div>
+</div>
+
+{% endblock %}

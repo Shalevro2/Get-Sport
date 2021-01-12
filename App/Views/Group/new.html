@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Group{% endblock %}
+
+{% block footer %}
+<script src="/js/app.js"></script>
+<script src="/js/newGroup.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+
+{% if user.errors is not empty %}
+<p>Errors:</p>
+<ul>
+    {% for error in user.errors %}
+    <li>{{ error }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="container">
+    <h1 class="h1Css">Create Group</h1>
+    <!-- new group form -->
+    <form method="post" action="/Group/create" id="formCreateGroup">
+        <!-- group name div -->
+        <div class="form-group">
+            <label for="inputGroupName">Group Name</label>
+            <input id="inputGroupName" name="groupName" placeholder="Group Name" autofocus required
+                class="form-control" />
+        </div>
+        <!-- city div -->
+        <div class="form-group">
+            <label for="selectCityCode">City</label>
+            <select id="selectCityCode" class="form-control" name='cityCode'>
+                {% for dropdownOption in City %}
+                <option value="{{ dropdownOption.cityCode }}">{{ dropdownOption.cityName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- sport category div -->
+        <div class="form-group">
+            <label for="selectSportCategory">Sport Category</label>
+            <select id="selectSportCategory" class="form-control" name='SportCategoryCode'>
+                {% for dropdownOption in SportCategory %}
+                <option value="{{ dropdownOption.SportCategoryCode }}">{{ dropdownOption.SportCategoryName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- date div -->
+        <div class="form-group">
+            <label for="inputDate">Date</label>
+            <input id="inputDate" class="form-control" type="date" name="datePlay" required>
+        </div>
+        <!-- time div -->
+        <div class="form-group">
+            <label for="time">Time</label>
+            <input type="time" class="form-control" placeholder="Enter time" name="timePlay" required />
+        </div>
+        <!-- desription div -->
+        <div class="form-group green-border-focus">
+            <label for="Description">Description</label>
+            <textarea class="form-control" id="Description" name="description" rows="3" maxlength="40"></textarea>
+        </div>
+        <!-- submit button -->
+        <button type="submit" class="btn btn-default">Add</button>
+
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% block footer %}
+
+
+{% endblock %}
+
+{% block body %}
+
+<!-- invite user to group from options -->
+{% for dropdownOption in usersUserName %}
+<option value="{{ dropdownOption.userName}}">{{ dropdownOption.userName }}</option>
+
+{% endfor %}
+{% endblock %}

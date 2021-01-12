@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Contact us{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <!-- Title -->
+    <h1 class="h1Css">Contact us</h1>
+    <!-- Form send message to admin -->
+    <form method="post" action="/ContactUs/send" id="formContactUS">
+        <!-- Select option of message -->
+        <div class="form-group">
+            <label for="selectTypeMessage">Type message</label>
+            <select id="selectTypeMessage" class="form-control" name='selectTypeMessage' required>
+                <option value="User Reporting">User Reporting</option>
+                <option value="Something's not working">Something's not working</option>
+                <option value="Abusive content">Abusive content</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <!-- Body of message -->
+        <div class="form-group green-border-focus">
+            <label for="bodyMessage">Body message</label>
+            <textarea class="form-control" id="bodyMessage" name="bodyMessage" rows="3" maxlength="40"
+                placeholder="Type your message here.." required></textarea>
+        </div>
+        <!-- Send the message (button) -->
+        <button type="submit" class="btn btn-default">Send</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% block footer %}
+
+
+{% endblock %}
+
+{% block body %}
+
+<!-- requests to join group -->
+{% for r in requests %}
+<p id={{ r.userName }}><b>{{ r.userName }}</b> Requests to join.
+    <button type=" button" class="btn btn-success btn-sm btnAccept" id='{{ r.userName }}' name='btnAccept'
+        value='Accept'>
+        Accept
+    </button>
+    <button type=" button" class="btn btn-danger btn-sm btnReject" id='{{ r.userName }}' name='btnReject'
+        value='Reject'>
+        Reject
+    </button>
+</p>
+
+{% endfor %}
+{% endblock %}

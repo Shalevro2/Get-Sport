@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Log in{% endblock %}
+
+{% block body %}
+
+
+<div class="container loginDiv">
+    <!-- login form -->
+    <form action="/login/create" method="post">
+        <!-- user image -->
+        <img src="/img/user.png" alt="user" class="center-block loginImg">
+        <!-- Email div -->
+        <div class="form-group inputMax">
+            <label for="inputEmail">Email address</label>
+            <input type="email" id="inputEmail" name="email" placeholder="Email address" autofocus value="{{ email }}"
+                class="form-control" />
+        </div>
+        <!-- Password div -->
+        <div class="form-group inputMax">
+            <label for="inputPassword">Password</label>
+            <input type="password" id="inputPassword" name="password" placeholder="Password" class="form-control" />
+        </div>
+        <!-- remember me div -->
+        <div class="loginDownDiv">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="remember_me" {% if remember_me %} checked="checked" {% endif %} />
+                    Remember
+                    me
+                </label>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-default">Log in</button>
+            <a href="/password/forgot">Forgot password?</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

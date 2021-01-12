@@ -1,0 +1,22 @@
+{% block footer %}
+
+
+{% endblock %}
+
+{% block body %}
+<!-- users in group -->
+{% for u in users %}
+<p>
+    <span class="glyphicon glyphicon-user">{{ u.userName }}</span>
+
+    {% if user.userName == group.userNameManager and user.userName != u.userName %}
+    <button type=" button" class="btn btn-danger btn-sm btnRemoveUser" id='{{ u.userName }}' name='btnRemoveUser'
+        value='RemoveUser'>
+        Remove
+    </button>
+    {% endif %}
+
+</p>
+{% endfor %}
+
+{% endblock %}

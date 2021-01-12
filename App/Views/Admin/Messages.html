@@ -1,0 +1,63 @@
+{% extends "baseAdmin.html" %}
+
+{% block title %}Messages{% endblock %}
+
+{% block footer %}
+
+<script src="/js/messages.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <table class="table">
+        <!-- Head of table (titles) -->
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Body message</th>
+                <th scope="col">Sender</th>
+                <th scope="col">Date</th>
+                <th scope="col">Mark as read</th>
+                <th scope="col">Remove</th>
+            </tr>
+        </thead>
+        <!-- Body of table (data) -->
+        <tbody>
+            {% for m in messages %}
+            <tr>
+                <!-- Bold the text (<b>) if the message unread (is_read == 0)-->
+                <td>{% if m.is_read == 0 %} <b> {% endif %} {{ m.type }} {% if m.is_read == 0 %} </b> {% endif %}</td>
+                <td>{% if m.is_read == 0 %} <b> {% endif %} {{ m.body_message }} {% if m.is_read == 0 %} </b>
+                    {% endif %}
+                </td>
+                <td>{% if m.is_read == 0 %} <b> {% endif %} {{ m.sender }} {% if m.is_read == 0 %} </b> {% endif %}</td>
+                <td>{% if m.is_read == 0 %} <b> {% endif %} {{ m.date }} {% if m.is_read == 0 %} </b> {% endif %}</td>
+                <!-- MarkAsRead button or MarkAsUnread button -->
+                <td>
+                    <form action="/Admin/markAsRead" method="post" id="frmMarkAsRead">
+                        {% if m.is_read == 0 %}
+                        <button type="submit" class="btn btn-primary btn-sm" name="markAsReadBtn" value="{{ m.id }}">
+                            Mark as read</button>
+                        {% else %}
+                        <button type="submit" class="btn btn-primary btn-sm" name="markAsUnReadBtn" value="{{ m.id }}">
+                            Mark as unread</button>
+                        {% endif %}
+                    </form>
+                </td>
+                <!-- Remove button -->
+                <td>
+                    <button type="submit" class="btn btn-danger btn-sm removeMessage" name="removeMessage" id="{{m.id}}"
+                        value="{{ m.id }}"><i class=" far fa-trash-alt"></i></button>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+</div>
+{% endblock %}

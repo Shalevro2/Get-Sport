@@ -1,0 +1,120 @@
+{% extends 'baseAdmin.html' %}
+
+{% block title %}Admin panel{% endblock %}
+
+
+{% block footer %}
+<script type="text/javascript" src="/js/html2canvas.js"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"
+    integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.1.0/jspdf.plugin.autotable.js"></script>
+
+<script src="/js/panel.js"></script>
+<link rel="stylesheet" href="/css/adminPanel.css" />
+<link rel="stylesheet" href="/css/scrollx.css" />
+
+
+
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid mainPanelAdmin">
+    <!-- Title -->
+    <h1 class="h1Css">Admin panel</h1>
+    <!-- Admin panel -->
+    <div class="row" id="adminPanelId">
+
+        <div class="col-md-12">
+            <div class="panel-body">
+                <div class="row">
+                    <!-- Amount of users div -->
+                    <div class="col-xs-4 col-md-4">
+                        <div class="bg-primary usersNumDiv">
+                            <i class="fas fa-user-friends" id="adminIcon"></i> <span class="lead">{{ numOfUsers }}
+                                Users</span>
+                        </div>
+                    </div>
+                    <!-- Amount of groups div -->
+                    <div class="col-xs-4 col-md-4">
+                        <div class="groupsNumDiv">
+                            <i class="fas fa-futbol" id="adminIcon"></i> <span class="lead"> {{ numOfGroups }}
+                                Groups</span>
+                        </div>
+                    </div>
+                    <!-- Amount of chat messages div -->
+                    <div class="col-xs-4 col-md-4">
+                        <div class="messagesNumDiv">
+                            <i class="far fa-comment-dots" id="adminIcon"></i> <span class="lead"> {{ numOfMessages }}
+                                Chat
+                                messages</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <!-- Amount of Users in city graph -->
+                <div class="col-xs-6 col-md-6">
+                    <div id="usersCityGraph"></div>
+                </div>
+                <!-- Amount of groups in sport-category graph -->
+                <div class="col-xs-6 col-md-6">
+                    <div id="sportGraph"></div>
+                </div>
+            </div>
+            <!-- Games per month graph -->
+            <div id="monthGraph"></div>
+
+        </div>
+
+    </div>
+    <!-- Queries table -->
+    <table class="table" id="queriesTable">
+        <!-- Head of table (titles) -->
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Query</th>
+                <th scope="col">Result</th>
+            </tr>
+        </thead>
+        <!-- Body of table (data) -->
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Average age of users</td>
+                <td>{{ usersAgeAvg.AVGage }}</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>The group with the most users</td>
+                <td>{{ groupWithMostUsers.GroupName }} ({{ groupWithMostUsers.mycount }})</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>The group with the most chat messages</td>
+                <td>{{ groupWithMostMessages.GroupName }} ({{ groupWithMostMessages.mycount }})</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>Sport Category that most common among users from the city with the most users</td>
+                <td>{{ mostCommonSportInTheMostCommonCity.SportCategoryName }} </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Button create pdg -->
+    <div>
+        <form method="post" id="make_pdf">
+            <button type="button" name="create_pdf" id="create_pdf" class="btn btn-danger btn-xs center-block">Create
+                PDF</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

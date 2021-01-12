@@ -1,0 +1,64 @@
+{% extends "baseAdmin.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block footer %}
+
+<script src="/js/adminUsers.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+<!-- Search input -->
+<blockquote class="blockquote">
+    <p>Type something in the input field to search the table for names, user names, city or age:</p>
+    <input class="form-control" id="searchInput" type="text" placeholder="Search..">
+</blockquote>
+
+<div class="container">
+    <!-- Users table -->
+    <table class="table" id="usersTable">
+        <!-- Head of table (titles) -->
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#<i class="fa fa-fw fa-sort thCursor"></i></th>
+                <th scope="col">User Name<i class="fa fa-fw fa-sort thCursor"></i></th>
+                <th scope="col">Name<i class="fa fa-fw fa-sort thCursor"></i></th>
+                <th scope="col">city<i class="fa fa-fw fa-sort thCursor"></i></th>
+                <th scope="col">age<i class="fa fa-fw fa-sort thCursor"></i></th>
+                <th scope="col">block</th>
+            </tr>
+        </thead>
+        <!-- Body of table (data) -->
+        <tbody>
+            {% set i = 1 %}
+            {% for u in allUsers %}
+            {% if u.userName != 'admin' %}
+            <tr>
+                <th scope="row">{{i}}</th>
+                <td>{{ u.userName }}</td>
+                <td>{{ u.name }} {{ u.lastName }}</td>
+                <td>{{ u.cityName}}</td>
+                <td>{{u.age}}</td>
+                <!-- Block\Unblock button -->
+                <td>
+                    <form action="/Admin/blockUser" method="post" class="frmBlock">
+                        {% if u.is_active == 1 %}
+                        <button type="submit" class="btn btn-danger btn-sm" name="block"
+                            value="{{u.userName}}">Block</button>
+                        {% else %}
+                        <button type="submit" class="btn btn-success btn-sm" name="block"
+                            value="{{u.userName}}">UnBlock</button>
+                        {% endif %}
+                    </form>
+                </td>
+            </tr>
+            {% set i = i + 1 %}
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

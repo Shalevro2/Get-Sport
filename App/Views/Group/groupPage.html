@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Groups{% endblock %}
+
+{% block footer %}
+
+<script src="/js/groupPage.js"></script>
+
+
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+    <!-- group name as title -->
+    <h2 class="text-center">{{group.GroupName}}</h2>
+
+    {% if user.userName != group.userNameManager %}
+    <!-- if simple user show exit button -->
+    <div class="text-right">
+        <button class="btn btn-default btn-danger btnExit" id='{{ group.GroupName }}' name='btnExit'>
+            Exit <i class="fas fa-sign-out-alt"></i></button>
+    </div>
+    {% else %}
+    <!-- if manager show delete group button -->
+    <div class="text-right">
+        <button class="btn btn-default btn-danger btnDeleteGroup" id='{{ group.GroupName }}' name='btnDeleteGroup'>
+            <i class="far fa-trash-alt"></i> Delete group </i></button>
+    </div>
+    {% endif %}
+
+    <div class="row groupPageMain">
+        <!-- group chat div -->
+        <div class="col-lg-6 chatDiv">
+            <h7 class="h6"><strong>Group chat</strong></h7>
+            <div class="chathistory" id="chathistoryID">
+            </div>
+            <div class="chatbox form-group">
+                <textarea id="message" name='message' class="form-control txtarea"
+                    placeholder="Enter your message here.."></textarea>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="row">
+                <!-- users in group div -->
+                <div class="col-lg-12 namesDiv text-center">
+                    {% for u in users %}
+                    <p>
+                        <span class="glyphicon glyphicon-user">{{ u.userName }}</span>
+
+                        {% if user.userName == group.userNameManager and user.userName != u.userName %}
+                        <!-- if the user is manager show remove buttons -->
+                        <button type=" button" class="btn btn-danger btn-sm btnRemoveUser" id='{{ u.userName }}'
+                            name='btnRemoveUser' value='RemoveUser'>
+                            Remove
+                        </button>
+                        {% endif %}
+
+                    </p>
+                    {% endfor %}
+                </div>
+                <!-- group details div -->
+                <div class="col-lg-12 groupDetailDiv text-center">
+
+                    <p>
+                        <i class="fas fa-city"></i>
+                        City: {{ city }}
+                    </p>
+
+                    <p>
+                        <span class=" glyphicon glyphicon-calendar">
+                            Date: {{ group.datePlay }}
+                        </span>
+                    </p>
+
+                    <p>
+                        <span class=" glyphicon glyphicon glyphicon-time">
+                            Time: {{ group.timePlay }}
+                        </span>
+                    </p>
+
+                    <p>
+                        <span class="glyphicon glyphicon glyphicon-file"></span>
+                        Descrption: {{ group.descrption }}
+                    </p>
+
+                    {% if user.userName == group.userNameManager%}
+                    <a class="pull-right" id="editInfo">Edit</a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% if user.userName == group.userNameManager %}
+<!-- if user is manager of group show: -->
+<div class="container">
+    <!-- requests div -->
+    {% for r in requests %}
+    <div id="requestsDiv">
+        <p id={{ r.userName }}><b>{{ r.userName }}</b> Requests to join.
+            <button type=" button" class="btn btn-success btn-sm btnAccept" id='{{ r.userName }}' name='btnAccept'
+                value='Accept'>
+                Accept
+            </button>
+            <button type=" button" class="btn btn-danger btn-sm btnReject" id='{{ r.userName }}' name='btnReject'
+                value='Reject'>
+                Reject
+            </button>
+        </p>
+    </div>
+    {% endfor %}
+    <!-- add users div -->
+    <div class="form-group" id='addUsersDiv'>
+        <label for="addUsers">Add users</label>
+        <select id="addUsers" class="form-control" name='addUsers' multiple>
+            {% for dropdownOption in usersUserName %}
+            <option value="{{ dropdownOption.userName}}">{{ dropdownOption.userName }}</option>
+            {% endfor %}
+        </select>
+        <button type=" button" class="btn btn-info btn-sm btnInvite" id="btnInvite" name='btnInvite' value='Invite'>
+            Invite
+        </button>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

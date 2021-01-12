@@ -1,0 +1,320 @@
+:root {
+    --navbar-bg-color: rgb(0, 0, 0);
+    --logo-bg-color: #14e414;
+}
+
+
+textarea {
+    resize: none !important;
+}
+
+.baseDiv {
+    padding: 0 !important;
+}
+
+.signupDiv {
+    max-width: 600px;
+    background-color: #faf8f8;
+    margin-top: 25px;
+}
+
+.loginDiv {
+    max-width: 600px;
+}
+
+.inputMax {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+
+.loginImg {
+    margin-top: 25px !important;
+    max-width: 500px;
+    max-height: 700px;
+}
+
+.mainIndex {
+    background-image: url("/img/index.png");
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: 100% !important;
+    width: 100% !important;
+    height: 300vh;
+}
+
+.divFromSignUp {
+    margin-top: 25px;
+}
+
+.loginDownDiv {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.navbar {
+    background-image: url("/img/whiteLogo.png");
+    background-position: 50%;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-color: var(--navbar-bg-color);
+    margin-bottom: 0 !important;
+}
+
+.navbar .navbar-nav li>a {
+    color: white !important;
+}
+
+.navbar .navbar-nav li>a:hover {
+    color: var(--logo-bg-color) !important;
+    background: rgba(46, 45, 45, 0.719);
+}
+
+.flex-container {
+    width: 100%;
+    height: 300px;
+    background-color: #F4F7FE;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.flex-item {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    background-color: rgb(255, 255, 255);
+    display: inline-block;
+    width: 150px;
+    height: 300px;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+    word-wrap: break-word !important;
+}
+
+.flex-item+.flex-item {
+    margin-left: 2%;
+}
+
+.divSpanDetails {
+    word-wrap: break-word !important;
+    color: rgb(0, 0, 0);
+    max-width: 140px;
+}
+
+.divSpanDetails:hover {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btnBottomRight {
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 0px;
+    border-style: 4px white solid !important;
+}
+
+.chatDiv {
+    height: 300px;
+}
+
+.chathistory {
+    height: 200px;
+    border: 1px solid #ccc;
+    overflow-y: scroll;
+    margin-bottom: 24px;
+    padding: 16px;
+}
+
+.txtarea {
+    max-height: 50px;
+    margin: auto 0;
+    padding: 0;
+}
+
+.namesDiv {
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    height: 150px;
+}
+
+.groupDetailDiv {
+    border: 1px solid #ccc;
+    overflow-y: auto;
+    height: 150px;
+}
+
+/*#region Home/index.html*/
+
+#img {
+    background-image: url("/img/homeBg.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+@media screen and (max-width: 1200px) {
+    #img {
+        height: 150vh;
+    }
+}
+
+.getSportDiv {
+    background-image: url("/img/whatIsGetSport.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 70vh;
+    width: 100vh;
+    margin-left: 2.5%;
+    max-width: 600px;
+}
+
+.iconsHome {
+    margin-top: 15%;
+}
+
+@media screen and (max-width: 1200px) {
+    .getSportDiv {
+        width: 75vh;
+        background-size: contain;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .getSportDiv {
+        width: 75vh;
+        background-size: contain;
+    }
+}
+
+.featuresDiv {
+    background-color: var(--navbar-bg-color);
+    height: 80vh;
+}
+
+@media screen and (max-width: 1200px) {
+    .featuresDiv {
+        height: 200vh;
+    }
+}
+
+.homeIcons {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 300px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#locationIcon {
+    background-image: url("/img/locationIcon.png");
+}
+
+#loveSport {
+    background-image: url("/img/loveSport.png");
+}
+
+#playTogether {
+    background-image: url("/img/playTogether.png");
+}
+
+#footerLogo {
+    height: 40vh;
+    background-image: url("/img/whiteLogo.png");
+    background-position: 50%;
+    background-position-y: bottom;
+    background-size: 50vh;
+    background-repeat: no-repeat !important;
+    background-color: var(--navbar-bg-color);
+    margin-bottom: 0 !important;
+}
+
+/*#endregion*/
+
+.welcomeDiv {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.thCursor {
+    cursor: pointer !important;
+}
+
+.disAll {
+    display: block !important;
+}
+
+.sportGraph {
+    max-width: 720px;
+}
+
+#adminIcon {
+    color: #fff;
+    font-size: 4em;
+    margin-left: 8px;
+}
+
+
+.groupCard {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hGroupName {
+    color: white;
+    background-color: rgb(0, 0, 0);
+}
+
+
+.notification .badge {
+    font-style: normal;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    padding: 5px 10px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+}
+
+.groupPageMain {
+    background-image: url("/img/groupPageBG.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#addUsers {
+    max-width: 150px;
+}
+
+
+#btnInvite {
+    display: inline !important;
+}
+
+
+.indexPar {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 1.5rem;
+    color: rgb(0, 0, 0);
+}
+
+.h1Css {
+    color: var(--logo-bg-color);
+    font-family: 'Rubik', sans-serif;
+    font-weight: bold;
+}
+
+.updateGroupDiv {
+    max-width: 450px;
+}
+
+.updateGroupInput {
+    background: transparent;
+}

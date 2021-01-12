@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block footer %}
+
+<script src="/js/home.js"></script>
+<link rel="stylesheet" href="/css/scrollx.css" />
+
+
+{% endblock %}
+
+{% block body %}
+
+<!-- First div -->
+<div class="container-fluid">
+    <div class="row text-center" id="img">
+        <!-- 'What is GetSport?' div -->
+        <div class="container getSportDiv"></div>
+    </div>
+</div>
+<!-- Second div -->
+<div class="container-fluid featuresDiv">
+    <!-- Features div -->
+    <div class="row iconsHome">
+
+        <div class="col-lg-4 col-md-4">
+            <div class="homeIcons" id="locationIcon">
+            </div>
+        </div>
+
+        <div class=" col-lg-4 col-md-4">
+            <div class="homeIcons" id="loveSport">
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4">
+            <div class="homeIcons" id="playTogether">
+            </div>
+        </div>
+
+    </div>
+    <!-- Footer logo -->
+    <div class="row">
+        <div id="footerLogo"></div>
+    </div>
+</div>
+
+
+{% endblock %}

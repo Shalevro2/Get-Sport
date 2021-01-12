@@ -1,0 +1,50 @@
+{% block footer %}
+<script src="/js/updateGroup.js"></script>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container updateGroupDiv">
+    <!-- update group form -->
+    <form method="post" action="/Group/update" id="formUpdateGroup">
+        <!-- city div -->
+        <div class="form-group">
+            <label for="selectCityCode">City</label>
+            <select id="selectCityCode" class="form-control updateGroupInput" name='cityCode'>
+                {% for dropdownOption in City %}
+                <option value="{{ dropdownOption.cityCode }}" {% if  dropdownOption.cityCode == group.cityCode %}
+                    selected {% endif %}>
+                    {{ dropdownOption.cityName }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- date div -->
+        <div class="row">
+            <div class="form-group col-xs-6 col-md-6">
+                <label for="inputDate">Date</label>
+                <input id="inputDate" class="form-control updateGroupInput" type="date" name="datePlay"
+                    value="{{ group.datePlay }}" required>
+            </div>
+            <!-- time div -->
+            <div class="form-group col-xs-6 col-md-6">
+                <label for="time">Time</label>
+                <input type="time" class="form-control updateGroupInput" placeholder="Enter time" name="timePlay"
+                    value="{{ group.timePlay }}" required />
+            </div>
+        </div>
+        <!-- description div -->
+        <div class=" form-group green-border-focus">
+            <label for="Description">Description</label>
+            <textarea class="form-control updateGroupInput" id="Description" name="description" rows="3"
+                maxlength="40">{{ group.descrption }}</textarea>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <button type="submit" class="btn btn-default">Save</button>
+            <a id="cancelEdit">Cancel</a>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

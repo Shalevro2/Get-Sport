@@ -1,0 +1,34 @@
+.panel-body .btn:not(.btn-block) {
+    margin-bottom: 10px;
+}
+
+
+
+.groupsNumDiv {
+    background-color: green !important;
+    color: white;
+}
+
+.messagesNumDiv {
+    background-color: rgb(255, 38, 38) !important;
+    color: white;
+}
+
+.adminCont {
+    max-width: 720px;
+}
+
+#usersCityGraph,
+#sportGraph,
+#queriesTable,
+#monthGraph,
+.groupsNumDiv,
+.messagesNumDiv,
+.usersNumDiv {
+    border: rgb(235, 234, 234) solid 2px;
+}
+
+#monthGraph {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

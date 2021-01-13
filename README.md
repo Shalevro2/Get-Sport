@@ -10,6 +10,6 @@ The network has an admin panel with statistics on the network, games schedule , 
 
 ## Technologies
 
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
+* [General info]
+* [Technologies]
+* [Setup]

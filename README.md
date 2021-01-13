@@ -8,3 +8,7 @@ In each group there is a chat that users can coordinate the rules, date etc.
 The network has an admin panel with statistics on the network, games schedule , etc.
 
 ## Technologies
+
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)

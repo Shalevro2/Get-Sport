@@ -9,7 +9,13 @@ In each group there is a chat that users can coordinate the rules, date etc.
 The network has an admin panel with statistics on the network, games schedule , etc.
 
 ## Technologies
+* PHP 7
+* js
+* jQuery
+* CSS
+* Bootstrap
+* MySQL
 
-* [General info]
-* [Technologies]
-* [Setup]
+### Design pattern
+* MVC
+* Singleton- for creating a single instance of a PDO object

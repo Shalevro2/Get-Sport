@@ -15,7 +15,13 @@ The network has an admin panel with statistics on the network, games schedule , 
 * CSS
 * Bootstrap
 * MySQL
+* twig
 
 ### Design pattern
 * MVC
 * Singleton- for creating a single instance of a PDO object
+
+### Main Vendors
+* PHPMailer
+* jsPdf
+* Google charts
